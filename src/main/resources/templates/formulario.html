@@ -1,0 +1,51 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+            crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1>Cadastrar</h1>
+            <form th:object="${criarPacienteFormulario}" class="card-body" action="/paciente/novo" method="POST">
+                <div class="form-group">
+                    <label for="nomePaciente">Nome</label>
+                    <input th:field="*{nomePaciente}" th:errorClass="is-invalid" class="form-control" placeholder="nome do paciente"/>
+                    <small>Informa qual o nome do paciente.</small>
+                    <div class="invalid-feedback" th:errors="*{nomePaciente}">
+                        Erros do nome do paciente
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="endereco">Endereço</label>
+                    <input th:field="*{endereco}" th:errorClass="is-invalid" class="form-control" placeholder="endereço"/>
+                    <small>Endereço do paciente.</small>
+                    <div class="invalid-feedback" th:errors="*{endereco}">
+                        Erros no endereço
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="dataNascimento">Data de Nascimento</label>
+                    <input th:field="*{dataNascimento}" th:errorClass="is-invalid" class="form-control" type="date"/>
+                    <small>Data de nascimento do paciente</small>
+                    <div class="invalid-feedback" th:errors="*{dataNascimento}">
+                        Erros na data
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="observacoes">Observações</label>
+                    <textarea th:field="*{observacoes}" class="form-control" placeholder="Adicione observações."></textarea>
+                </div>
+                <button class="btn btn-primary" type="submit">Cadastrar</button>
+            </form>
+
+
+            <a href="/home"><button class="btn btn-info ">Home</button></a>
+        </div>
+    </div>
+</body>
+</html>
